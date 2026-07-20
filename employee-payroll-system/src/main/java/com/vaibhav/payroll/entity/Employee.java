@@ -22,11 +22,11 @@ public class Employee {
     private String designation;
 
     @Positive(message = "Salary must be greater that zero")
-    private String salary;
+    private Double salary;
 
     public Employee() {}
 
-    public Employee(Long id, String name, String department, String designation, String salary) {
+    public Employee(Long id, String name, String department, String designation, Double salary) {
         this.id = id;
         this.name = name;
         this.department = department;
@@ -50,7 +50,7 @@ public class Employee {
         return designation;
     }
 
-    public String getSalary() {
+    public Double getSalary() {
         return salary;
     }
 
@@ -70,7 +70,7 @@ public class Employee {
         this.designation = designation;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(Double salary) {
         this.salary = salary;
     }
 }
