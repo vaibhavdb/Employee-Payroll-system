@@ -2,10 +2,12 @@ package com.vaibhav.payroll.controller;
 
 import com.vaibhav.payroll.dto.EmployeeRequest;
 import com.vaibhav.payroll.dto.EmployeeResponse;
+import com.vaibhav.payroll.dto.PayrollResponse;
 import com.vaibhav.payroll.entity.Employee;
 import com.vaibhav.payroll.service.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,9 +39,21 @@ public class EmployeeController {
         return employeeService.getEmployeeById(id);
     }
 
+    @PutMapping("/{id}")
     public EmployeeResponse updateEmployee(@PathVariable Long id, @Valid @RequestBody EmployeeRequest request) {
         return employeeService.updateEmployee(id, request);
     }
 
-    
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteEmployee(@PathVariable Long id) {
+        employeeService.deleteEmployee(id);
+    }
+
+    @GetMapping("/payroll/{id}")
+    public PayrollResponse generatePayroll(@PathVariable Long id) {
+        return employeeService.generatePayroll(id);
+    }
+
+
 }
