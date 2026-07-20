@@ -51,10 +51,9 @@ public class EmployeeController {
     }
 
     @GetMapping("/payroll/{id}")
-    public PayrollResponse generatePayroll(@PathVariable Long id){
+    public PayrollResponse generatePayroll(@PathVariable Long id) {
         return employeeService.generatePayroll(id);
     }
-
 
 
 }
